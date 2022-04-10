@@ -3716,7 +3716,7 @@ INSERT INTO `system_menu` VALUES (1128, '支付应用信息创建', 'pay:app:cre
 INSERT INTO `system_menu` VALUES (1129, '支付应用信息更新', 'pay:app:update', 3, 3, 1126, '', '', '', 0, '', '2021-11-10 01:13:31', '', '2021-11-10 01:13:31', b'0');
 INSERT INTO `system_menu` VALUES (1130, '支付应用信息删除', 'pay:app:delete', 3, 4, 1126, '', '', '', 0, '', '2021-11-10 01:13:31', '', '2021-11-10 01:13:31', b'0');
 INSERT INTO `system_menu` VALUES (1131, '支付应用信息导出', 'pay:app:export', 3, 5, 1126, '', '', '', 0, '', '2021-11-10 01:13:31', '', '2021-11-10 01:13:31', b'0');
-INSERT INTO `system_menu` VALUES (1132, '秘钥解析', 'pay:channel:parsing', 3, 6, 1129, '', '', '', 0, '1', '2021-11-08 15:15:47', '1', '2021-11-08 15:15:47', b'0');
+INSERT INTO `system_menu` VALUES (1132, '密钥解析', 'pay:channel:parsing', 3, 6, 1129, '', '', '', 0, '1', '2021-11-08 15:15:47', '1', '2021-11-08 15:15:47', b'0');
 INSERT INTO `system_menu` VALUES (1133, '支付商户信息查询', 'pay:merchant:query', 3, 1, 1132, '', '', '', 0, '', '2021-11-10 01:13:41', '', '2021-11-10 01:13:41', b'0');
 INSERT INTO `system_menu` VALUES (1134, '支付商户信息创建', 'pay:merchant:create', 3, 2, 1132, '', '', '', 0, '', '2021-11-10 01:13:41', '', '2021-11-10 01:13:41', b'0');
 INSERT INTO `system_menu` VALUES (1135, '支付商户信息更新', 'pay:merchant:update', 3, 3, 1132, '', '', '', 0, '', '2021-11-10 01:13:41', '', '2021-11-10 01:13:41', b'0');
@@ -3734,7 +3734,7 @@ INSERT INTO `system_menu` VALUES (1146, '支付应用信息创建', 'pay:app:cre
 INSERT INTO `system_menu` VALUES (1147, '支付应用信息更新', 'pay:app:update', 3, 3, 1144, '', '', '', 0, '', '2021-12-25 08:26:31', '', '2021-12-25 08:47:48', b'1');
 INSERT INTO `system_menu` VALUES (1148, '支付应用信息删除', 'pay:app:delete', 3, 4, 1144, '', '', '', 0, '', '2021-12-25 08:26:31', '', '2021-12-25 08:47:46', b'1');
 INSERT INTO `system_menu` VALUES (1149, '支付应用信息导出', 'pay:app:export', 3, 5, 1144, '', '', '', 0, '', '2021-12-25 08:26:31', '', '2021-12-25 08:47:43', b'1');
-INSERT INTO `system_menu` VALUES (1150, '秘钥解析', 'pay:channel:parsing', 3, 6, 1129, '', '', '', 0, '1', '2021-11-08 15:15:47', '1', '2021-11-08 15:15:47', b'0');
+INSERT INTO `system_menu` VALUES (1150, '密钥解析', 'pay:channel:parsing', 3, 6, 1129, '', '', '', 0, '1', '2021-11-08 15:15:47', '1', '2021-11-08 15:15:47', b'0');
 INSERT INTO `system_menu` VALUES (1156, '支付订单查询', 'pay:order:query', 3, 1, 1155, '', '', '', 0, '', '2021-12-25 08:29:01', '', '2022-03-23 16:45:18', b'1');
 INSERT INTO `system_menu` VALUES (1157, '支付订单创建', 'pay:order:create', 3, 2, 1155, '', '', '', 0, '', '2021-12-25 08:29:01', '', '2022-03-23 16:45:39', b'1');
 INSERT INTO `system_menu` VALUES (1158, '支付订单更新', 'pay:order:update', 3, 3, 1155, '', '', '', 0, '', '2021-12-25 08:29:01', '', '2022-03-23 16:45:50', b'1');
@@ -6039,7 +6039,7 @@ CREATE TABLE `system_sms_channel` (
   `status` tinyint NOT NULL COMMENT '开启状态',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
   `api_key` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '短信 API 的账号',
-  `api_secret` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '短信 API 的秘钥',
+  `api_secret` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '短信 API 的密钥',
   `callback_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '短信发送回调 URL',
   `creator` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '' COMMENT '创建者',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
