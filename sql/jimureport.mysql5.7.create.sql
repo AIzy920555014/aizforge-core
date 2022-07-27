@@ -1434,8 +1434,8 @@ CREATE TABLE `rep_demo_employee`  (
 -- ----------------------------
 -- Records of rep_demo_employee
 -- ----------------------------
-INSERT INTO `rep_demo_employee` VALUES ('1', '001', '张三', '男', '2000-02-04 13:36:19', '汉族', '团员', '北京', '170', '65', '良好', '110101200002044853', '大专', '北京科技', '计算机', '北京朝阳区', '1001', 'zhang@163.com', '18011111111', '英语', '三级', '三级', '2019-02-04 13:41:17', '2020-02-04 13:41:31', '项目经理', '2018年9月—2019年7月：北京语言文化大学比较文学研究所攻读博士学位，获得比较文学博士学位', '2019年5月---至今 XX公司     网络系统工程师  \n2019年5月---至今 XX公司     网络系统工程师', NULL, '2020-02-04 15:18:03', NULL, NULL, NULL);
-INSERT INTO `rep_demo_employee` VALUES ('2', '002', '王红', '女', '2000-02-04 13:36:19', '汉族', '团员', '北京', '170', '65', '良好', '110101200002044853', '大专', '北京科技', '计算机', '北京朝阳区', '1001', 'zhang@163.com', '18011111111', '英语', '三级', '三级', '2019-02-04 13:41:17', '2020-02-04 13:41:31', '项目经理', '2018年9月—2019年7月：北京语言文化大学比较文学研究所攻读博士学位，获得比较文学博士学位', '2019年5月---至今 XX公司     网络系统工程师  \n2019年5月---至今 XX公司     网络系统工程师', NULL, '2020-02-04 18:39:27', NULL, NULL, NULL);
+INSERT INTO `rep_demo_employee` VALUES ('1', '001', '张三', '男', '2000-02-04 13:36:19', '汉族', '团员', '北京', '170', '65', '良好', '110101200002044853', '大专', '北京科技', '计算机', '北京朝阳区', '1001', 'zhang@163.com', '18011111111', '英语', '三级', '三级', '2019-02-04 13:41:17', '2020-02-04 13:41:31', '项目经理', '2018年9月—2019年7月：北京语言文化大学比较文学研究所攻读博士学位，获得比较文学博士学位', '2019年5月---至今 XX公司     网络系统工程师  \n2019年5月---至今 XX公司     网络系统工程师', NULL, '2020-02-04 15:18:03', NULL, NULL, NULL);
+INSERT INTO `rep_demo_employee` VALUES ('2', '002', '王红', '女', '2000-02-04 13:36:19', '汉族', '团员', '北京', '170', '65', '良好', '110101200002044853', '大专', '北京科技', '计算机', '北京朝阳区', '1001', 'zhang@163.com', '18011111111', '英语', '三级', '三级', '2019-02-04 13:41:17', '2020-02-04 13:41:31', '项目经理', '2018年9月—2019年7月：北京语言文化大学比较文学研究所攻读博士学位，获得比较文学博士学位', '2019年5月---至今 XX公司     网络系统工程师  \n2019年5月---至今 XX公司     网络系统工程师', NULL, '2020-02-04 18:39:27', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for rep_demo_gongsi
@@ -1618,5 +1618,16 @@ INSERT INTO `tmp_report_data_income` VALUES ('中国石油全资（股份所属�
 INSERT INTO `tmp_report_data_income` VALUES ('中石油控股或有控股权', 310628.11, 369298.64, 0.00, 0.00, 0.00, 0.00, 679926.75);
 INSERT INTO `tmp_report_data_income` VALUES ('中石油参股', 72062.45, 0.00, 0.00, 0.00, 0.00, 0.00, 72062.75);
 INSERT INTO `tmp_report_data_income` VALUES ('非中石油', 1486526.90, 212070.72, 0.00, 0.00, 0.00, 226415.09, 1698597.62);
+
+-- ----------------------------
+-- 多租户字段
+-- ----------------------------
+ALTER TABLE  jimu_report_data_source
+ADD COLUMN tenant_id varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '多租户标识' AFTER connect_times;
+ALTER TABLE jimu_dict
+ADD COLUMN tenant_id varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '多租户标识' AFTER type;
+ALTER TABLE jimu_report
+ADD COLUMN tenant_id varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '多租户标识' AFTER js_str;
+
 
 SET FOREIGN_KEY_CHECKS = 1;
