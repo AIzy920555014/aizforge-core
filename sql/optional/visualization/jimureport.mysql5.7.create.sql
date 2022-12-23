@@ -418,17 +418,19 @@ CREATE TABLE `jimu_report_data_source`  (
   `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime NULL DEFAULT NULL COMMENT '更新日期',
   `connect_times` int(1) UNSIGNED NULL DEFAULT 0 COMMENT '连接失败次数',
+  `tenant_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '多租户标识',
+  `type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '类型(report:报表;drag:仪表盘)',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_jmdatasource_report_id`(`report_id`) USING BTREE,
   INDEX `idx_jmdatasource_code`(`code`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jimu_report_data_source
 -- ----------------------------
-INSERT INTO `jimu_report_data_source` VALUES ('1324261983692902402', 'jeewx', '1324261770294071296', '', NULL, 'MYSQL', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/jeewx-boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8', 'root', 'root', 'jeecg', '2020-11-05 16:07:15', NULL, '2020-11-05 16:07:15', 0);
-INSERT INTO `jimu_report_data_source` VALUES ('26d21fe4f27920d2f56abc8d90a8e527', 'oracle', '1308645288868712448', '', NULL, 'ORACLE', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@192.168.1.199:1521:helowin', 'jeecgbootbpm', 'jeecg196283', 'admin', '2021-01-05 19:26:24', NULL, '2021-01-05 19:26:24', 1);
-INSERT INTO `jimu_report_data_source` VALUES ('8f90daf47d15d35ca6cf420748b8b9ba', 'localhost', '1316944968992034816', '', NULL, 'MYSQL5.7', 'com.mysql.cj.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/jeecg-boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8', 'root', 'root', 'admin', '2021-01-13 14:34:00', NULL, '2021-01-13 14:34:00', 0);
+INSERT INTO `jimu_report_data_source` VALUES ('1324261983692902402', 'jeewx', '1324261770294071296', '', NULL, 'MYSQL', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/jeewx-boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8', 'root', 'root', 'jeecg', '2020-11-05 16:07:15', NULL, '2020-11-05 16:07:15', 0, NULL, 'report');
+INSERT INTO `jimu_report_data_source` VALUES ('26d21fe4f27920d2f56abc8d90a8e527', 'oracle', '1308645288868712448', '', NULL, 'ORACLE', 'oracle.jdbc.OracleDriver', 'jdbc:oracle:thin:@192.168.1.199:1521:helowin', 'jeecgbootbpm', 'jeecg196283', 'admin', '2021-01-05 19:26:24', NULL, '2021-01-05 19:26:24', 1, NULL, 'report');
+INSERT INTO `jimu_report_data_source` VALUES ('8f90daf47d15d35ca6cf420748b8b9ba', 'localhost', '1316944968992034816', '', NULL, 'MYSQL5.7', 'com.mysql.cj.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/jeecg-boot?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8', 'root', 'root', 'admin', '2021-01-13 14:34:00', NULL, '2021-01-13 14:34:00', 0, NULL, 'report');
 
 -- ----------------------------
 -- Table structure for jimu_report_db
