@@ -1625,8 +1625,8 @@ INSERT INTO `tmp_report_data_income` VALUES ('非中石油', 1486526.90, 212070.
 -- ----------------------------
 -- 多租户字段
 -- ----------------------------
-ALTER TABLE  jimu_report_data_source
-ADD COLUMN tenant_id varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '多租户标识' AFTER connect_times;
+-- ALTER TABLE  jimu_report_data_source
+-- ADD COLUMN tenant_id varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '多租户标识' AFTER connect_times;
 ALTER TABLE jimu_dict
 ADD COLUMN tenant_id varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '多租户标识' AFTER type;
 ALTER TABLE jimu_report
