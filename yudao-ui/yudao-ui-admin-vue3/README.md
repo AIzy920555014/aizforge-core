@@ -22,6 +22,14 @@ pnpm ts:check
 pnpm build:prod
 ```
 
+## 环境变量
+
+- `VITE_BASE_URL`：前端部署路径，默认 `/`
+- `VITE_API_URL`：后端 API 地址；本地开发通常使用 `/admin-api`
+- `VITE_DEV`：是否启用开发模式
+
+真实账号、密码和第三方密钥不得写入 `.env` 文件或提交到 Git。
+
 线上地址：[https://aixy99.site](https://aixy99.site)
 
 项目仓库：[AIzyForge/aizyforge-core](https://github.com/AIzy920555014/aizyforge-core)
