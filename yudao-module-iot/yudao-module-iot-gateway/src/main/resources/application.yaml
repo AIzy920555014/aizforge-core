@@ -1,6 +1,6 @@
 spring:
   application:
-    name: iot-gateway-server
+    name: aizyforge-iot-gateway
   profiles:
     active: local # 默认激活本地开发环境
 
@@ -10,7 +10,7 @@ spring:
       host: 127.0.0.1 # Redis 服务器地址
       port: 6379 # Redis 服务器端口
       database: 0 # Redis 数据库索引
-      # password: # Redis 密码，如果有的话
+      password: ${REDIS_PASSWORD:}
       timeout: 30000ms # 连接超时时间
   # Kafka 配置项，对应 KafkaProperties 配置类
   kafka:
@@ -42,7 +42,7 @@ yudao:
         read-timeout: 30s
       # 设备 Token 配置
       token:
-        secret: yudaoIotGatewayTokenSecret123456789 # Token 密钥，至少32位
+        secret: ${IOT_GATEWAY_TOKEN_SECRET:} # Token 密钥，生产环境必须配置至少 32 位
         expiration: 7d
 
       # 协议实例列表
@@ -133,8 +133,8 @@ yudao:
           emqx:
             mqtt-host: 127.0.0.1                  # MQTT Broker 地址
             mqtt-port: 1883                       # MQTT Broker 端口
-            mqtt-username: admin                  # MQTT 用户名
-            mqtt-password: public                 # MQTT 密码
+            mqtt-username: ${MQTT_USERNAME:}      # MQTT 用户名
+            mqtt-password: ${MQTT_PASSWORD:}      # MQTT 密码
             mqtt-client-id: iot-gateway-mqtt      # MQTT 客户端 ID
             mqtt-ssl: false                       # 是否开启 SSL
             mqtt-topics:
@@ -147,7 +147,7 @@ yudao:
             reconnect-delay-ms: 5000              # 重连延迟，单位：毫秒
             # 是否信任所有 SSL 证书 (默认: false)。警告：生产环境必须为 false！
             # 仅在开发环境或内网测试时，如果使用了自签名证书，可以临时设置为 true
-            trust-all: true # 在 dev 环境可以设为 true
+            trust-all: false
             # EMQX HTTP Hook 回调网关的 HTTPS 配置（可选）
             http:
               ssl-enabled: false
@@ -163,9 +163,9 @@ yudao:
             # 高级 SSL/TLS 配置 (当 trust-all: false 且 mqtt-ssl: true 时生效)
             ssl-options:
               key-store-path: "classpath:certs/client.jks" # 客户端证书库路径
-              key-store-password: "your-keystore-password" # 客户端证书库密码
+              key-store-password: ${MQTT_KEY_STORE_PASSWORD:}
               trust-store-path: "classpath:certs/trust.jks" # 信任的 CA 证书库路径
-              trust-store-password: "your-truststore-password" # 信任的 CA 证书库密码
+              trust-store-password: ${MQTT_TRUST_STORE_PASSWORD:}
         # ====================================
         # 针对引入的 Modbus TCP Client 组件的配置
         # ====================================

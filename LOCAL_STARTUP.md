@@ -1,4 +1,4 @@
-# AizForge Core 本机启动文档
+# AIzyForge 智企云枢本机启动文档
 
 这是一份基于你当前这台 Mac 的后端本机启动说明，按步骤操作即可。
 
@@ -23,6 +23,9 @@
 
 ```zsh
 source /Users/aizy/.local/share/java-mysql/env.zsh
+export MYSQL_USERNAME=ruoyi
+export MYSQL_PASSWORD='你的本地数据库密码'
+export REDIS_PASSWORD=''
 ```
 
 然后检查核心命令是否可用：
@@ -45,13 +48,14 @@ redis-server --version
 - 主机：`127.0.0.1`
 - 端口：`3306`
 - 数据库：`ruoyi-vue-pro`
-- 用户名：`ruoyi`
-- 密码：`123456`
+- 用户名：通过 `MYSQL_USERNAME` 配置
+- 密码：通过 `MYSQL_PASSWORD` 配置，不写入仓库
 
 检查命令：
 
 ```zsh
-mysql -uruoyi -p123456 -h127.0.0.1 -P3306 -D "ruoyi-vue-pro" -e "show tables;" | head
+MYSQL_PWD="$MYSQL_PASSWORD" mysql -u"$MYSQL_USERNAME" -h127.0.0.1 -P3306 \
+  -D "ruoyi-vue-pro" -e "show tables;" | head
 ```
 
 如果失败，优先检查：
@@ -100,7 +104,8 @@ redis-server /Users/aizy/.local/redis/redis.conf
 - MySQL：`127.0.0.1:3306/ruoyi-vue-pro`
 - Redis：`127.0.0.1:6379`
 
-正常情况下你不需要再改这个文件，除非本机数据库或 Redis 地址变了。
+数据库、Redis 和第三方服务凭据均通过环境变量传入，不要把真实密钥写回配置文件。
+AI、地图、快递和第三方登录在未配置对应环境变量时默认关闭。
 
 ## 5. 编译项目
 
@@ -164,6 +169,10 @@ lsof -iTCP:48080 -sTCP:LISTEN
 
 如果你主要用 IntelliJ IDEA 开发，也可以把项目导入 IDEA 后直接在 IDEA 里运行，但命令行 jar 启动是当前最稳定、最容易复现的方式。
 
+在 IDEA 中运行 `YudaoServerApplication` 时，在 Run Configuration 的
+`Environment variables` 中配置 `MYSQL_USERNAME`、`MYSQL_PASSWORD` 和
+`REDIS_PASSWORD`，Active profiles 设置为 `local`。
+
 ## 9. 如何停止后端
 
 如果后端正在当前终端前台运行：
@@ -193,7 +202,8 @@ lsof -iTCP:48080 -sTCP:LISTEN
 执行：
 
 ```zsh
-mysql -uruoyi -p123456 -h127.0.0.1 -P3306 -D "ruoyi-vue-pro" -e "select 1;"
+MYSQL_PWD="$MYSQL_PASSWORD" mysql -u"$MYSQL_USERNAME" -h127.0.0.1 -P3306 \
+  -D "ruoyi-vue-pro" -e "select 1;"
 ```
 
 这条如果失败，后端基本不可能正常启动。

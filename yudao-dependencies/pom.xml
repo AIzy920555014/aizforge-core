@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
-    <description>基础 bom 文件，管理整个项目的依赖版本</description>
-    <url>https://github.com/YunaiV/ruoyi-vue-pro</url>
+    <description>AIzyForge 智企云枢依赖版本管理</description>
+    <url>https://github.com/AIzy920555014/aizyforge-core</url>
 
     <properties>
         <revision>2026.06-SNAPSHOT</revision>

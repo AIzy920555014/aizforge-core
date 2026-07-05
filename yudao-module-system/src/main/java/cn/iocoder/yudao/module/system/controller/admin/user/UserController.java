@@ -223,7 +223,7 @@ public class UserController {
 
     @GetMapping("/list-by-nickname")
     @Operation(summary = "按昵称模糊搜索用户精简信息", description = "用于加好友等场景；免鉴权；当前仅按昵称匹配")
-    @Parameter(name = "nickname", description = "昵称关键词", required = true, example = "芋道")
+    @Parameter(name = "nickname", description = "昵称关键词", required = true, example = "示例")
     public CommonResult<List<UserSimpleRespVO>> getSimpleUserListByNickname(@RequestParam("nickname") String nickname) {
         if (StrUtil.isBlank(nickname)) {
             return success(Collections.emptyList());
