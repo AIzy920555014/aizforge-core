@@ -39,4 +39,16 @@ if rg -l 'password: \$\{REDIS_PASSWORD:\}' "${REDIS_CONFIGS[@]}"; then
   exit 1
 fi
 
+if ! rg -q '^[[:space:]]+client: \$\{EXPRESS_CLIENT:NOT_PROVIDE\}$' \
+  "${REPO_ROOT}/yudao-server/src/main/resources/application.yaml"; then
+  echo "Express integration must be disabled by default" >&2
+  exit 1
+fi
+
+if rg -q '\$\{(KD_NIAO|KD100)_[A-Z_]+:\}' \
+  "${REPO_ROOT}/yudao-server/src/main/resources/application.yaml"; then
+  echo "Blank express credentials would trigger startup validation" >&2
+  exit 1
+fi
+
 echo "AIzyForge public branding verification passed"

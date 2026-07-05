@@ -335,14 +335,7 @@ yudao:
       comment-expire-time: 7d # 评论的过期时间
       status-sync-to-wxa-enable: true # 是否同步订单状态到微信小程序
     express:
-      client: kd_100
-      kd-niao:
-        api-key: ${KD_NIAO_API_KEY:}
-        business-id: ${KD_NIAO_BUSINESS_ID:}
-        request-type: 1002 # 免费版 1002；付费版 8001
-      kd100:
-        key: ${KD100_KEY:}
-        customer: ${KD100_CUSTOMER:}
+      client: ${EXPRESS_CLIENT:NOT_PROVIDE}
   iot:
     message-bus:
       type: redis # 消息总线的类型
