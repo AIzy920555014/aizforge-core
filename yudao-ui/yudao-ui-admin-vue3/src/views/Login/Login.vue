@@ -9,7 +9,7 @@
       >
         <!-- 左上角的 logo + 系统标题 -->
         <div class="relative flex items-center text-white">
-          <img alt="" class="mr-10px h-48px w-48px" src="@/assets/imgs/logo.png" />
+          <img :src="brandMark" alt="智企云枢" class="mr-10px h-48px w-48px" />
           <span class="text-20px font-bold">{{ underlineToHump(appStore.getTitle) }}</span>
         </div>
         <!-- 左边的背景图 + 欢迎语 -->
@@ -36,7 +36,7 @@
           style="color: var(--el-text-color-primary)"
         >
           <div class="flex items-center at-2xl:hidden at-xl:hidden">
-            <img alt="" class="mr-10px h-48px w-48px" src="@/assets/imgs/logo.png" />
+            <img :src="brandMark" alt="智企云枢" class="mr-10px h-48px w-48px" />
             <span class="text-20px font-bold">{{ underlineToHump(appStore.getTitle) }}</span>
           </div>
           <div class="flex items-center justify-end space-x-10px h-48px">
@@ -74,6 +74,7 @@
 </template>
 <script lang="ts" setup>
 import { underlineToHump } from '@/utils'
+import brandMark from '@/assets/svgs/brand-mark.svg'
 
 import { useDesign } from '@/hooks/web/useDesign'
 import { useAppStore } from '@/store/modules/app'

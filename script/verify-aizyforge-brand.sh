@@ -19,7 +19,7 @@ if ((${#TARGETS[@]} == 0)); then
   exit 2
 fi
 
-if rg -n --hidden --glob '!**/*.map' "${FORBIDDEN_REGEX}" "${TARGETS[@]}"; then
+if rg -l --hidden --glob '!**/*.map' "${FORBIDDEN_REGEX}" "${TARGETS[@]}"; then
   echo "Forbidden public branding detected" >&2
   exit 1
 fi
