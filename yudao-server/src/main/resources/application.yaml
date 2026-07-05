@@ -184,6 +184,7 @@ spring:
     stabilityai:
       api-key: ${STABILITY_AI_API_KEY:}
     dashscope: # 通义千问
+      enabled: ${DASHSCOPE_ENABLED:false}
       api-key: ${DASHSCOPE_API_KEY:}
     minimax: # Minimax：https://www.minimaxi.com/
       api-key: ${MINIMAX_API_KEY:}
@@ -195,6 +196,13 @@ spring:
         options:
           model: deepseek-chat
     model:
+      chat: none
+      embedding: none
+      image: none
+      moderation: none
+      audio:
+        speech: none
+        transcription: none
       rerank: false # 是否开启“通义千问”的 Rerank 模型，填写 dashscope 开启
     mcp:
       server:

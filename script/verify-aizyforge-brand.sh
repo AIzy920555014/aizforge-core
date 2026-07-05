@@ -51,4 +51,22 @@ if rg -q '\$\{(KD_NIAO|KD100)_[A-Z_]+:\}' \
   exit 1
 fi
 
+for ai_safe_default in \
+  'chat: none' \
+  'embedding: none' \
+  'image: none' \
+  'moderation: none'; do
+  if ! rg -q "^[[:space:]]+${ai_safe_default}$" \
+    "${REPO_ROOT}/yudao-server/src/main/resources/application.yaml"; then
+    echo "Missing AI safe default: ${ai_safe_default}" >&2
+    exit 1
+  fi
+done
+
+if ! rg -q '^[[:space:]]+enabled: \$\{DASHSCOPE_ENABLED:false\}$' \
+  "${REPO_ROOT}/yudao-server/src/main/resources/application.yaml"; then
+  echo "DashScope must be disabled by default" >&2
+  exit 1
+fi
+
 echo "AIzyForge public branding verification passed"
