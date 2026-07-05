@@ -25,8 +25,10 @@
 source /Users/aizy/.local/share/java-mysql/env.zsh
 export MYSQL_USERNAME=ruoyi
 export MYSQL_PASSWORD='你的本地数据库密码'
-export REDIS_PASSWORD=''
 ```
+
+如果 Redis 设置了密码，再额外配置
+`SPRING_DATA_REDIS_PASSWORD`；无密码时不要设置该变量。
 
 然后检查核心命令是否可用：
 
@@ -170,8 +172,8 @@ lsof -iTCP:48080 -sTCP:LISTEN
 如果你主要用 IntelliJ IDEA 开发，也可以把项目导入 IDEA 后直接在 IDEA 里运行，但命令行 jar 启动是当前最稳定、最容易复现的方式。
 
 在 IDEA 中运行 `YudaoServerApplication` 时，在 Run Configuration 的
-`Environment variables` 中配置 `MYSQL_USERNAME`、`MYSQL_PASSWORD` 和
-`REDIS_PASSWORD`，Active profiles 设置为 `local`。
+`Environment variables` 中配置 `MYSQL_USERNAME`、`MYSQL_PASSWORD`；Redis
+有密码时再配置 `SPRING_DATA_REDIS_PASSWORD`。Active profiles 设置为 `local`。
 
 ## 9. 如何停止后端
 

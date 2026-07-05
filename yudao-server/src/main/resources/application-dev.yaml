@@ -62,7 +62,6 @@ spring:
       host: ${REDIS_HOST:127.0.0.1}
       port: 6379 # 端口
       database: 1 # 数据库索引
-      password: ${REDIS_PASSWORD:}
 
 --- #################### 定时任务相关配置 ####################
 

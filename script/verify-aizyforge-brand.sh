@@ -3,6 +3,11 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ARTIFACT_ROOT="${REPO_ROOT}/yudao-ui/yudao-ui-admin-vue3"
+REDIS_CONFIGS=(
+  "${REPO_ROOT}/yudao-server/src/main/resources/application-local.yaml"
+  "${REPO_ROOT}/yudao-server/src/main/resources/application-dev.yaml"
+  "${REPO_ROOT}/yudao-module-iot/yudao-module-iot-gateway/src/main/resources/application.yaml"
+)
 
 if [[ "${1:-}" == "--artifact-root" ]]; then
   ARTIFACT_ROOT="${2:?artifact root is required}"
@@ -26,6 +31,11 @@ fi
 
 if ! rg -q '智企云枢' "${TARGETS[@]}"; then
   echo "Required Chinese brand not found" >&2
+  exit 1
+fi
+
+if rg -l 'password: \$\{REDIS_PASSWORD:\}' "${REDIS_CONFIGS[@]}"; then
+  echo "Empty Redis password placeholder would trigger AUTH" >&2
   exit 1
 fi
 
