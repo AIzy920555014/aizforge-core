@@ -3,7 +3,7 @@
     href="https://beian.miit.gov.cn/"
     target="_blank"
     rel="noopener noreferrer"
-    class="transition-colors hover:text-[var(--el-color-primary)]"
+    class="text-inherit no-underline transition-colors hover:text-[var(--el-color-primary)]"
   >
     冀ICP备2026021324号
   </a>
